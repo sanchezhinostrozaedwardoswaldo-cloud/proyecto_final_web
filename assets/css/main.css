@@ -2457,10 +2457,17 @@ section,
   transform: translateY(-2px);
 }
 
+.features .feature-item .f-image img {
+  height: 280px;     /* 🔹 Ajusta la altura de la imagen */
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+}
+
 .features .feature-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px 60px;
 }
 
 @media (max-width: 1200px) {
