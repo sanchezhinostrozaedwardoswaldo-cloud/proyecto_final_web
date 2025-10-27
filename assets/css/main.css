@@ -355,7 +355,10 @@ h6 {
   .navmenu .dropdown ul a:hover,
   .navmenu .dropdown ul .active:hover,
   .navmenu .dropdown ul li:hover>a {
-    color: var(--nav-dropdown-hover-color);
+    background-color: rgb(255, 81, 0); /* Fondo anaranjado */
+    color: #fff; /* Texto blanco */
+    border-radius: 4px; /* Opcional: bordes redondeados */
+    transition: 0.3s; /* Suaviza el efecto */
   }
 
   .navmenu .dropdown:hover>ul {
@@ -2496,14 +2499,21 @@ section,
   border-radius: var(--card-radius);
   padding: 22px 18px 20px 18px;
   box-shadow: var(--shadow-soft);
-  transition: 0.3s;
-  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 .features .feature-item:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
-  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(116, 62, 26, 0.466);
+}
+
+.feature-item .f-image img {
+  transition: transform 0.4s ease;
+}
+
+.feature-item:hover .f-image img {
+  transform: scale(1.05);
 }
 
 .features .feature-item::before {
