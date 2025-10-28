@@ -267,27 +267,59 @@
 })();
 
 // Sincronizar indicadores personalizados
-    const carousel = document.querySelector('#heroCarousel');
-    const indicators = document.querySelectorAll('.carousel-indicators-custom button');
+const carousel = document.querySelector('#heroCarousel');
+const indicators = document.querySelectorAll('.carousel-indicators-custom button');
 
-    carousel.addEventListener('slide.bs.carousel', function (e) {
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === e.to);
-        });
+carousel.addEventListener('slide.bs.carousel', function (e) {
+  indicators.forEach((indicator, index) => {
+    indicator.classList.toggle('active', index === e.to);
+  });
+});
+
+// Añadir funcionalidad a los controles personalizados
+document.querySelector('.carousel-control-prev-custom').addEventListener('click', function () {
+  bootstrap.Carousel.getInstance(carousel).prev();
+});
+
+document.querySelector('.carousel-control-next-custom').addEventListener('click', function () {
+  bootstrap.Carousel.getInstance(carousel).next();
+});
+
+// Hacer que los indicadores sean clicables
+indicators.forEach((indicator, index) => {
+  indicator.addEventListener('click', function () {
+    bootstrap.Carousel.getInstance(carousel).to(index);
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const stats = document.querySelectorAll(".hero-stats .stat-item");
+  const carousel = document.getElementById("heroCarousel");
+
+  // Oculta todos los stats excepto el primero
+  stats.forEach((stat, index) => {
+    stat.style.display = index === 0 ? "flex" : "none";
+    if (index === 0) stat.classList.add("fade-in-up");
+  });
+
+  // Cuando el carrusel cambie de imagen
+  carousel.addEventListener("slide.bs.carousel", (e) => {
+    const nextIndex = e.to;
+
+    // Oculta todos los stats
+    stats.forEach((stat) => {
+      stat.style.display = "none";
+      stat.classList.remove("fade-in-up");
     });
 
-    // Añadir funcionalidad a los controles personalizados
-    document.querySelector('.carousel-control-prev-custom').addEventListener('click', function() {
-        bootstrap.Carousel.getInstance(carousel).prev();
-    });
+    // ✅ Aquí va la línea que mencionas:
+    const nextStat = stats[nextIndex];
+    if (nextStat) {
+      nextStat.style.display = "flex";
+      // Agregamos un pequeño retraso antes de activar la animación
+      setTimeout(() => nextStat.classList.add("fade-in-up"), 100);
+    }
+  });
+});
 
-    document.querySelector('.carousel-control-next-custom').addEventListener('click', function() {
-        bootstrap.Carousel.getInstance(carousel).next();
-    });
-
-    // Hacer que los indicadores sean clicables
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', function() {
-            bootstrap.Carousel.getInstance(carousel).to(index);
-        });
-    });
