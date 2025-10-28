@@ -259,6 +259,24 @@ h6 {
   --background-color: #ffffff;
 }
 
+/* Seccion Título con efecto gradiente */
+
+#section-title{
+  padding: 1rem 0;
+  background-color: rgb(202, 73, 3);
+}
+
+.title{
+  font-size:1rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #ffffff 0%, #ffe4dc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -4871,9 +4889,8 @@ section,
 
 #hero-section {
   position: relative;
-  min-height: 85vh;
+  min-height: 80vh;
   overflow: hidden;
-  background: #000;
 }
 
 /* Carousel de fondo con animación suave */
@@ -4896,7 +4913,7 @@ section,
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(0.6);
+  filter: brightness(0.9);
   transition: transform 8s ease;
 }
 
@@ -4928,28 +4945,66 @@ section,
   z-index: 2;
 }
 
-/* Contenido principal */
+/* Contenido principal 
 .hero-content {
   position: relative;
   z-index: 3;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 80px 0;
+}*/
+
+.hero-content {
+  position: absolute; /* ocupará todo el espacio dentro del hero */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* ocupa todo el alto del hero */
+  z-index: 3;
+  display: flex;
+  flex-direction: column; /* apilar elementos verticalmente */
+  justify-content: space-between; /* separa el badge arriba y el resto abajo */
+  align-items: flex-start; /* alinea todo al lado izquierdo */
+  padding: 50px 80px; /* espacio desde bordes */
 }
 
-/* Tarjeta de contenido elegante */
+/* Tarjeta de contenido elegante 
 .hero-card {
+  background: transparent;
   /*backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);*/
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 30px;
   padding: 3rem;
   height: 100%;
   transform: translateY(0);
   transition: all 0.5s ease;
-  /*animation: fadeInUp 1s ease-out;*/
+  /*animation: fadeInUp 1s ease-out;
+}*/
+
+.hero-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-end;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
+
+.hero-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  gap: 2rem;
+}
+
 
 @keyframes fadeInUp {
   from {
@@ -4963,26 +5018,29 @@ section,
   }
 }
 
-.hero-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(255, 87, 34, 0.15);
-  border-color: rgba(255, 87, 34, 0.5);
+.stat-item {
+  transition: opacity 1.5s ease;
+  opacity: 0;
 }
 
-/* Badge superior */
+.stat-item.fade-in-up {
+  opacity: 1;
+}
+
+
+/* Badge superior 
 .hero-badge {
-  display: inline-flex;
+  display: flex;
+  width: 100%;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   background: linear-gradient(135deg, #ff5722 0%, #ff7043 100%);
   color: white;
-  padding: 8px 20px;
-  border-radius: 50px;
+  padding: 8px 15px;
+  border-radius: 10px;
   font-size: 0.9rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
-  animation: pulse 2s infinite;
-}
+}*/
 
 @keyframes pulse {
 
@@ -4996,10 +5054,10 @@ section,
   }
 }
 
-.hero-badge i {
+/*.hero-badge i {
   font-size: 1.2rem;
   animation: rotate 3s linear infinite;
-}
+}*/
 
 @keyframes rotate {
   from {
@@ -5011,25 +5069,12 @@ section,
   }
 }
 
-/* Título con efecto gradiente */
-.hero-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  color: white;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  background: linear-gradient(135deg, #ffffff 0%, #ff5722 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-description {
+/*.hero-description {
   font-size: 1.2rem;
   color: #b0b0b0;
   margin-bottom: 2rem;
   line-height: 1.8;
-}
+}*/
 
 /* Botón principal elegante */
 .hero-btn {
@@ -5083,8 +5128,12 @@ section,
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; /* centra también verticalmente si hay varias filas */
   gap: 2rem;
   margin-top: 2.5rem;
+  width: 100%;
+  text-align: center;
 }
 
 .stat-item {
@@ -5092,11 +5141,11 @@ section,
   align-items: center;
   gap: 12px;
   color: #e0e0e0;
-  font-size: 0.95rem;
+  font-size: 1.5rem;
 }
 
 .stat-item i {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #ff5722;
   animation: bounce 2s infinite;
 }
@@ -5208,6 +5257,17 @@ section,
   opacity: 0.3;
 }
 
+#hero-section,
+#hero-section .hero-content,
+#hero-section .container,
+#hero-section .row,
+#hero-section .col-lg-10,
+#hero-section .col-xl-9,
+#hero-section .hero-card {
+  height: 100%;
+}
+
+
 @keyframes float {
 
   0%,
@@ -5255,7 +5315,21 @@ section,
 
   .hero-btn {
     padding: 14px 30px;
-    font-size: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .hero-content {
+    padding: 30px 20px;
+  }
+
+  .hero-bottom {
+    gap: 1.5rem;
+  }
+  .stat-item{
+    font-size: 1.1rem;
+  }
+  .hero-title{
+    font-size: 2.4rem;
   }
 }
 
@@ -5263,8 +5337,8 @@ section,
 @media (max-width: 468px) {
   /* Botones del carrusel */
   .carousel-control-custom {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
 
   .carousel-control-prev-custom {
@@ -5281,31 +5355,21 @@ section,
 
   /* Contenido (tarjeta principal) */
   .hero-card {
-    padding: 1rem 1.2rem; /* menos espacio interno */
+    padding: 0; /* menos espacio interno */
     border-radius: 15px;
-    max-width: 95%; /* se adapta un poco más al ancho del móvil */
+    max-width: 100%; /* se adapta un poco más al ancho del móvil */
     margin: 0 auto;
     transform: scale(0.9); /* reduce tamaño general visual */
   }
 
-  .hero-badge span {
-    font-size: 0.75rem;
-  }
-
   .hero-title {
-    font-size: 1.2rem; /* título más compacto */
+    font-size: 2rem; /* título más compacto */
     line-height: 1.3;
-  }
-
-  .hero-description {
-    font-size: 0.85rem;
-    line-height: 1.4;
-    margin-bottom: 1rem;
   }
 
   .hero-btn {
     padding: 10px 20px;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 
   .hero-btn i {
@@ -5318,11 +5382,11 @@ section,
   }
 
   .hero-stats .stat-item {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .hero-stats .stat-item i {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   /* Indicadores del carrusel más pequeños */
@@ -5333,17 +5397,6 @@ section,
   }
 }
 
-.hero-content .row {
-  justify-content: flex-start !important;
-}
 
-.hero-content .col-lg-10,
-.hero-content .col-xl-9 {
-  margin-left: 0 !important;
-}
-
-.hero-card {
-  margin-left: 0 !important;
-}
 
 
