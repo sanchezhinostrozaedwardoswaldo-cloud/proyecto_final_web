@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->Host = 'smtp.office365.com';
         $mail->SMTPAuth = true;
         $mail->Username = '1641845@senati.pe'; // Tu correo Senati
-        $mail->Password = '60873154$KYL'; // ⚠️ Contraseña o App password
+        $mail->Password = ''; // ⚠️ Contraseña o App password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
