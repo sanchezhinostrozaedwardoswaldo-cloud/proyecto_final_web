@@ -265,3 +265,29 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+// Sincronizar indicadores personalizados
+    const carousel = document.querySelector('#heroCarousel');
+    const indicators = document.querySelectorAll('.carousel-indicators-custom button');
+
+    carousel.addEventListener('slide.bs.carousel', function (e) {
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === e.to);
+        });
+    });
+
+    // Añadir funcionalidad a los controles personalizados
+    document.querySelector('.carousel-control-prev-custom').addEventListener('click', function() {
+        bootstrap.Carousel.getInstance(carousel).prev();
+    });
+
+    document.querySelector('.carousel-control-next-custom').addEventListener('click', function() {
+        bootstrap.Carousel.getInstance(carousel).next();
+    });
+
+    // Hacer que los indicadores sean clicables
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', function() {
+            bootstrap.Carousel.getInstance(carousel).to(index);
+        });
+    });

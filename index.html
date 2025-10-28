@@ -35,11 +35,40 @@
 
       <div class="top-row d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.webp" alt=""> -->
           <h1 class="sitename">PixelTech</h1>
         </a>
-
+        <div class="nav-wrap">
+          <div class="container d-flex justify-content-center position-relative">
+            <nav id="navmenu" class="navmenu">
+              <ul>
+                <li><a href="#hero" class="active">Hogar</a></li>
+                <li><a href="#Porque_elegirnos">Nuestras ventajas</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li class="dropdown">
+                  <a href="#productos">Categorias <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                  <ul id="color-plomo" class="text-dark">
+                    <li><a href="productos.html#laptops">Laptops y Computadoras</a></li>
+                    <li><a href="productos.html#smartphones">Smartphones y Tablets</a></li>
+                    <li><a href="productos.html#auriculares">Auriculares y Audio</a></li>
+                    <li><a href="productos.html#accesorios">Accesorios Tecnológicos</a></li>
+                    <li><a href="productos.html#monitores">Monitores y Periféricos</a></li>
+                    <li><a href="productos.html#gadgets">Gadgets Inteligentes</a></li>
+                  </ul>
+                </li>
+        
+                <li class="dropdown">
+                  <a href="#about"></i>Acerca de <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                  <ul id="color-plomo" class="text-dark">
+                    <li><a href="#call-to-action">Descubre lo mejor de PixelTech</a></li>
+                    <li><a href="#faq">F.A.Q</a></li>
+                  </ul>
+                </li>
+                <li><a href="#contact"></i>Contacto</a></li>
+              </ul>
+              <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+          </div>
+        </div>
         <div class="d-flex align-items-center">
           <div class="social-links">
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -53,105 +82,101 @@
           </form>
         </div>
       </div>
-
     </div>
-
-  <div class="nav-wrap">
-    <div class="container d-flex justify-content-center position-relative">
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Hogar</a></li>
-          <li><a href="#Porque_elegirnos">Nuestras ventajas</a></li>
-          <li><a href="#ofertas">Ofertas</a></li>
-          <li class="dropdown">
-            <a href="#productos">Categorias <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul id="color-plomo" class="text-dark">
-              <li><a href="productos.html#laptops">Laptops y Computadoras</a></li>
-              <li><a href="productos.html#smartphones">Smartphones y Tablets</a></li>
-              <li><a href="productos.html#auriculares">Auriculares y Audio</a></li>
-              <li><a href="productos.html#accesorios">Accesorios Tecnológicos</a></li>
-              <li><a href="productos.html#monitores">Monitores y Periféricos</a></li>
-              <li><a href="productos.html#gadgets">Gadgets Inteligentes</a></li>
-            </ul>
-          </li>
-  
-          <li class="dropdown">
-            <a href="#about"></i>Acerca de <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul id="color-plomo" class="text-dark">
-              <li><a href="#call-to-action">Descubre lo mejor de PixelTech</a></li>
-              <li><a href="#faq">F.A.Q</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact"></i>Contacto</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-    </div>
-  </div>
   </header>
 
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row align-items-center gy-5">
-          <div class="col-lg-7">
-            <div class="hero-card shadow-sm" data-aos="fade-right" data-aos-delay="150">
-              <div class="eyebrow d-inline-flex align-items-center mb-3">
-                <i class="bi bi-stars me-2"></i>
-                <span>Innovación y tecnología a tu alcance</span>
-              </div>
-              <div class="content">
-                <h2 class="display-5 fw-bold mb-3">Encuentra los mejores productos tecnológicos del momento</h2>
-                <p class="lead mb-4">Descubre laptops, smartphones, accesorios y más. 
-                                    Calidad garantizada, precios competitivos y lo último en tecnología para tu hogar o negocio.</p>
-                <div class="d-flex flex-wrap gap-3">
-                  <a href="productos.html" class="btn btn-primary-ghost">
-                    <span>Ver Productos</span>
-                    <i class="bi bi-arrow-right ms-2"></i>
-                  </a>
-
+    <section id="hero-section">
+      <!-- Carousel de fondo -->
+      <div id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel"
+        data-bs-interval="5000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/img/productos/1-2.jpg" alt="Producto 1">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/img/productos/19077286-800-800.webp" alt="Producto 2">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/img/productos/31373_230820241546233862.jpg" alt="Producto 3">
+          </div>
+        </div>
+      </div>
+    
+      <!-- Overlay con gradiente -->
+      <div class="hero-overlay"></div>
+    
+      <!-- Partículas decorativas -->
+      <div class="particles">
+        <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 80%; top: 40%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 30%; top: 60%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 70%; top: 80%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 50%; top: 30%; animation-delay: 8s;"></div>
+      </div>
+    
+      <!-- Controles del carousel -->
+      <div class="carousel-control-prev-custom carousel-control-custom" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <i class="bi bi-chevron-left"></i>
+      </div>
+      <div class="carousel-control-next-custom carousel-control-custom" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <i class="bi bi-chevron-right"></i>
+      </div>
+    
+      <!-- Indicadores -->
+      <div class="carousel-indicators-custom">
+        <button class="active" data-bs-target="#heroCarousel" data-bs-slide-to="0"></button>
+        <button data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+      </div>
+    
+      <!-- Contenido principal -->
+      <div class="hero-content">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-9">
+              <div class="hero-card">
+                <div class="hero-badge">
+                  <i class="bi bi-stars"></i>
+                  <span>Innovación y tecnología a tu alcance</span>
                 </div>
-                <div class="mini-stats d-flex flex-wrap gap-4 mt-4" data-aos="zoom-in" data-aos-delay="250">
-                  <div class="stat d-flex align-items-center">
-                    <i class="bi bi-lightning-charge me-2"></i>
+    
+                <h1 class="hero-title">
+                  Encuentra los mejores productos tecnológicos del momento
+                </h1>
+    
+                <p class="hero-description">
+                  Descubre laptops, smartphones, accesorios y más. Calidad garantizada,
+                  precios competitivos y lo último en tecnología para tu hogar o negocio.
+                </p>
+    
+                <a href="productos.html" class="hero-btn">
+                  <span>Ver Productos</span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+    
+                <div class="hero-stats">
+                  <div class="stat-item">
+                    <i class="bi bi-lightning-charge-fill"></i>
                     <span>Envíos rápidos a nivel nacional</span>
                   </div>
-                  <div class="stat d-flex align-items-center">
-                    <i class="bi bi-shield-check me-2"></i>
+                  <div class="stat-item">
+                    <i class="bi bi-shield-fill-check"></i>
                     <span>Garantía en todos los productos</span>
                   </div>
-                  <div class="stat d-flex align-items-center">
-                    <i class="bi bi-people me-2"></i>
+                  <div class="stat-item">
+                    <i class="bi bi-people-fill"></i>
                     <span>Atención personalizada</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-5">
-            <div class="media-stack" data-aos="zoom-in" data-aos-delay="200">
-              <figure class="media primary shadow-sm">
-                <img src="assets\img\illustration\portada.jpeg" class="img-fluid" alt="Hero visual">
-              </figure>
-              <figure class="media secondary shadow-sm">
-                <img src="assets/img/illustration/illustration-15.webp" class="img-fluid" alt="Supporting visual">
-              </figure>
-              <div class="floating-badge d-flex align-items-center shadow-sm" data-aos="fade-down" data-aos-delay="300">
-                <i class="bi bi-award me-2"></i>
-                <span>Tecnología que impulsa tu día a día</span>
-              </div>
-            </div>
-          </div>
         </div>
-
       </div>
-
-    </section><!-- /Hero Section -->
+    </section>
 
     <!-- Featured Services Section -->
     <section id="Porque_elegirnos" class="featured-services section">
