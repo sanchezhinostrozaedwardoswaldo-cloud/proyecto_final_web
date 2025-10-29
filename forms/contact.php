@@ -1,7 +1,7 @@
 <?php
-/*ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);*/
+error_reporting(E_ALL);
 
 // Primero se carga el autoload de Composer
 require __DIR__ . '/vendor/autoload.php';
@@ -14,8 +14,8 @@ $dotenv = Dotenv::createUnsafeImmutable(__DIR__);
 $dotenv->load();
 
 // Verificar que se haya leído
-//var_dump($_ENV);
-//exit;
+var_dump($_ENV);
+exit;
 
 // --- A partir de aquí sigue el código normal ---
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
