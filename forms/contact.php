@@ -1,59 +1,64 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+/*ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);*/
 
+// Primero se carga el autoload de Composer
+require __DIR__ . '/vendor/autoload.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use Dotenv\Dotenv;
+use SendGrid\Mail\Mail;
 
-require __DIR__ . '/vendor/autoload.php'; // Ajusta la ruta si es necesario
+// Forzar la carga del archivo .env
+$dotenv = Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->load();
 
+// Verificar que se haya leído
+//var_dump($_ENV);
+//exit;
+
+// --- A partir de aquí sigue el código normal ---
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = htmlspecialchars($_POST['name'] ?? '');
     $email = htmlspecialchars($_POST['email'] ?? '');
     $subject = htmlspecialchars($_POST['subject'] ?? 'Sin asunto');
     $message = htmlspecialchars($_POST['message'] ?? '');
 
-    $mail = new PHPMailer(true);
+    $apiKey = $_ENV['SENDGRID_API_KEY'];
 
-    try {
-        // 🔹 Configuración del servidor SMTP de Outlook / Senati
-        $mail->isSMTP();
-        $mail->Host = 'smtp.office365.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = '1641845@senati.pe'; // Tu correo Senati
-        $mail->Password = ''; // ⚠️ Contraseña o App password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+    $emailObj = new Mail();
+    $emailObj->setFrom("1641845@senati.pe", "Formulario Web SENATI");
+    $emailObj->setReplyTo($email, $name ?: "Usuario del formulario");
+    $emailObj->setSubject("📩 Nuevo mensaje de contacto: {$subject}");
+    $emailObj->addTo("sanchezhinostrozaedwardoswaldo@gmail.com", "Edward Hinostroza");
 
-        // 🔹 Remitente y destinatario
-        $mail->setFrom('1641845@senati.pe', 'Formulario Web');
-        $mail->addAddress('1641845@senati.pe', 'Edward Hinostroza'); // Dónde recibes los mensajes
-        $mail->addReplyTo($email, $name);
-
-        // 🔹 Contenido del mensaje
-        $mail->isHTML(true);
-        $mail->Subject = "📩 Nuevo mensaje: $subject";
-        $mail->Body = "
-            <h2>Nuevo mensaje de contacto recibido</h2>
+    $emailBody = "
+        <div style='font-family: Arial, sans-serif; color: #333;'>
+            <h2 style='color:#007bff;'>Nuevo mensaje de contacto</h2>
             <p><strong>Nombre:</strong> {$name}</p>
             <p><strong>Correo:</strong> {$email}</p>
             <p><strong>Asunto:</strong> {$subject}</p>
             <p><strong>Mensaje:</strong><br>{$message}</p>
-        ";
-        $mail->AltBody = "Nuevo mensaje de contacto\n\nNombre: $name\nCorreo: $email\nAsunto: $subject\nMensaje:\n$message";
+            <hr>
+            <p style='font-size: 12px; color: #777;'>Este mensaje fue enviado desde tu sitio web FlexBiz.</p>
+        </div>
+    ";
 
-        // 🔹 Enviar el mensaje
-        $mail->send();
+    $emailObj->addContent("text/html", $emailBody);
+    $emailObj->addContent("text/plain", "Nuevo mensaje de {$name} ({$email})\nAsunto: {$subject}\n\n{$message}");
 
-        // ✅ Devolver exactamente "OK" para que el JS muestre el mensaje correcto
-        echo "OK";
+    $sendgrid = new \SendGrid($apiKey);
+
+    try {
+        $response = $sendgrid->send($emailObj);
+        if ($response->statusCode() >= 200 && $response->statusCode() < 300) {
+            echo "OK";
+        } else {
+            echo "Error al enviar. Código: " . $response->statusCode() . " → " . $response->body();
+        }
     } catch (Exception $e) {
-        http_response_code(500);
-        echo "Error: " . $mail->ErrorInfo;
+        echo "Error: " . $e->getMessage();
     }
 } else {
-    // Si se accede directamente al archivo
-    http_response_code(405);
-    echo "Error: Método no permitido";
+    echo "Error: método no permitido";
 }

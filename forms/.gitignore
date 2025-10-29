@@ -1,0 +1,9 @@
+# Archivos sensibles
+.env
+
+# Dependencias de Composer
+/vendor/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
