@@ -27,10 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $apiKey = $_ENV['SENDGRID_API_KEY'];
 
     $emailObj = new Mail();
-    $emailObj->setFrom("1641845@senati.pe", "Formulario Web SENATI");
+    $emailObj->setFrom($_ENV['EMAIL_FROM'], "Formulario Web SENATI");
     $emailObj->setReplyTo($email, $name ?: "Usuario del formulario");
     $emailObj->setSubject("📩 Nuevo mensaje de contacto: {$subject}");
-    $emailObj->addTo("sanchezhinostrozaedwardoswaldo@gmail.com", "Edward Hinostroza");
+    $emailObj->addTo($_ENV['EMAIL_TO'], "Edward Hinostroza");
 
     $emailBody = "
         <div style='font-family: Arial, sans-serif; color: #333;'>
