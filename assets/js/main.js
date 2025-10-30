@@ -266,60 +266,101 @@
 
 })();
 
-// Sincronizar indicadores personalizados
+
+
+
+// Obtener referencias
 const carousel = document.querySelector('#heroCarousel');
 const indicators = document.querySelectorAll('.carousel-indicators-custom button');
+const infoItems = document.querySelectorAll("#section-info-bar .info-item");
 
+let currentIndex = 0; // Índice compartido para ambos carruseles
+let syncInterval;
+let bsCarousel = bootstrap.Carousel.getInstance(carousel) || new bootstrap.Carousel(carousel, {
+  interval: 5000,
+  ride: 'carousel'
+});
+
+// Función para actualizar la barra informativa según el índice actual
+function updateInfoBar() {
+  if (window.innerWidth <= 995) {
+    infoItems.forEach((item, i) => {
+      item.classList.toggle("active", i === currentIndex);
+    });
+  } else {
+    infoItems.forEach((item) => item.classList.add("active"));
+  }
+}
+
+// Función para sincronizar cuando el carrusel cambia (automático o manual)
+carousel.addEventListener('slid.bs.carousel', function (e) {
+  currentIndex = e.to; // Actualizar índice compartido
+  updateInfoBar(); // Sincronizar barra informativa
+});
+
+// Función para manejar el responsive
+function handleResize() {
+  updateInfoBar(); // Actualizar visualización según tamaño de pantalla
+}
+
+// Sincronizar indicadores personalizados del hero
 carousel.addEventListener('slide.bs.carousel', function (e) {
   indicators.forEach((indicator, index) => {
     indicator.classList.toggle('active', index === e.to);
   });
 });
 
-// Añadir funcionalidad a los controles personalizados
+// Controles personalizados del carrusel
 document.querySelector('.carousel-control-prev-custom').addEventListener('click', function () {
-  bootstrap.Carousel.getInstance(carousel).prev();
+  bsCarousel.prev();
 });
 
 document.querySelector('.carousel-control-next-custom').addEventListener('click', function () {
-  bootstrap.Carousel.getInstance(carousel).next();
+  bsCarousel.next();
 });
 
 // Hacer que los indicadores sean clicables
 indicators.forEach((indicator, index) => {
   indicator.addEventListener('click', function () {
-    bootstrap.Carousel.getInstance(carousel).to(index);
+    bsCarousel.to(index);
   });
 });
 
+// Inicializar
+updateInfoBar();
+window.addEventListener("resize", handleResize);
 
-document.addEventListener("DOMContentLoaded", () => {
-  const stats = document.querySelectorAll(".hero-stats .stat-item");
-  const carousel = document.getElementById("heroCarousel");
 
-  // Oculta todos los stats excepto el primero
-  stats.forEach((stat, index) => {
-    stat.style.display = index === 0 ? "flex" : "none";
-    if (index === 0) stat.classList.add("fade-in-up");
+
+document.addEventListener('DOMContentLoaded', function () {
+  const carouselEl = document.getElementById('heroCarousel');
+
+  if (!carouselEl) return;
+
+  // Si usas Bootstrap 5, escuchamos el evento 'slid.bs.carousel' para saber el slide activo
+  carouselEl.addEventListener('slid.bs.carousel', function (e) {
+    // e.to es el índice del slide que quedó activo (0-based)
+    toggleZonesVisibility(e.to);
   });
 
-  // Cuando el carrusel cambie de imagen
-  carousel.addEventListener("slide.bs.carousel", (e) => {
-    const nextIndex = e.to;
+  // Inicial: comprobar el slide activo al cargar
+  // Bootstrap 5 agrega .active al .carousel-item activo, podemos comprobar
+  const activeIndex = Array.from(carouselEl.querySelectorAll('.carousel-item')).findIndex(item => item.classList.contains('active'));
+  toggleZonesVisibility(activeIndex);
 
-    // Oculta todos los stats
-    stats.forEach((stat) => {
-      stat.style.display = "none";
-      stat.classList.remove("fade-in-up");
-    });
+  function toggleZonesVisibility(activeIdx) {
+    // Solo mostrar zonas cuando activeIdx === 0 (primer slide)
+    const firstSlide = carouselEl.querySelector('.carousel-item.first-slide');
+    if (!firstSlide) return;
 
-    // ✅ Aquí va la línea que mencionas:
-    const nextStat = stats[nextIndex];
-    if (nextStat) {
-      nextStat.style.display = "flex";
-      // Agregamos un pequeño retraso antes de activar la animación
-      setTimeout(() => nextStat.classList.add("fade-in-up"), 100);
+    const zones = firstSlide.querySelector('.hero-zones');
+    if (!zones) return;
+
+    if (activeIdx === 0) {
+      zones.style.display = 'grid';
+    } else {
+      zones.style.display = 'none';
     }
-  });
+  }
 });
 
