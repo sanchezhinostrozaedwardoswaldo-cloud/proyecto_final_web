@@ -31,60 +31,136 @@
 
 <body class="index-page">
 
-  <header id="header" class="header sticky-top">
+  <header id="header" class="header ">
+    <!-- 🔹 Fila superior delgada -->
+  <div class="top-bar">
+    <ul class="top-links d-flex flex-wrap">
+      <li><a href="index.html">Hogar</a></li>
+      <li><a href="#ofertas">Ofertas</a></li>
+      <li><a href="#Porque_elegirnos">Ventajas</a></li>
+      <li><a href="#about">Acerca de</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </div>
     <div class="container-fluid container-xl position-relative">
-
-      <div class="top-row d-flex align-items-center justify-content-between">
+      <!-- 🔹 Fila principal -->
+      <div class="top-row d-flex align-items-center">
+        <!-- Logo -->
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">PixelTech</h1>
         </a>
-        <div class="nav-wrap">
-          <div class="container d-flex justify-content-center position-relative">
-            <nav id="navmenu" class="navmenu">
-              <ul>
-                <li><a href="#section-title" class="active">Hogar</a></li>
-                <li><a href="#Porque_elegirnos">Nuestras ventajas</a></li>
-                <li><a href="#ofertas">Ofertas</a></li>
-                <li class="dropdown">
-                  <a href="#productos">Categorias <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                  <ul id="color-plomo" class="text-dark">
-                    <li><a href="productos.html#laptops">Laptops y Computadoras</a></li>
-                    <li><a href="productos.html#smartphones">Smartphones y Tablets</a></li>
-                    <li><a href="productos.html#auriculares">Auriculares y Audio</a></li>
-                    <li><a href="productos.html#accesorios">Accesorios Tecnológicos</a></li>
-                    <li><a href="productos.html#monitores">Monitores y Periféricos</a></li>
-                    <li><a href="productos.html#gadgets">Gadgets Inteligentes</a></li>
-                  </ul>
-                </li>
-        
-                <li class="dropdown">
-                  <a href="#about"></i>Acerca de <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                  <ul id="color-plomo" class="text-dark">
-                    <li><a href="#call-to-action">Descubre lo mejor de PixelTech</a></li>
-                    <li><a href="#faq">F.A.Q</a></li>
-                  </ul>
-                </li>
-                <li><a href="#contact"></i>Contacto</a></li>
-              </ul>
-              <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-            </nav>
+  
+        <!-- Categorías -->
+        <div class="categories-dropdown">
+          <button class="btn-categories">
+            <i class="bi bi-grid-3x3-gap"></i>
+            <span>CATEGORÍAS</span>
+            <i class="bi bi-chevron-down"></i>
+          </button>
+          <div class="categories-menu">
+            <a href="productos.html#laptops" class="category-item"><i class="bi bi-laptop"></i> Laptops</a>
+            <a href="productos.html#smartphones" class="category-item"><i class="bi bi-phone"></i> Smartphones</a>
+            <a href="productos.html#auriculares" class="category-item"><i class="bi bi-headphones"></i> Auriculares</a>
+            <a href="productos.html#accesorios" class="category-item"><i class="bi bi-usb-symbol"></i> Accesorios</a>
+            <a href="productos.html#monitores" class="category-item"><i class="bi bi-display"></i> Monitores</a>
+            <a href="productos.html#gadgets" class="category-item"><i class="bi bi-smartwatch"></i> Gadgets</a>
           </div>
         </div>
-        <div class="d-flex align-items-center">
-          <div class="social-links">
+  
+        <!-- Buscador -->
+        <form class="search-form flex-grow-1">
+          <input type="text" placeholder="Buscar productos..." class="form-control">
+          <button type="submit" class="btn"><i class="bi bi-search"></i></button>
+        </form>
+  
+        <!-- Redes y Mi Cuenta -->
+        <div class="header-right-actions d-flex align-items-center">
+          <div class="social-links d-none d-lg-flex">
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
           </div>
 
-          <form class="search-form ms-4">
-            <input type="text" placeholder="Buscar..." class="form-control">
-            <button type="submit" class="btn"><i class="bi bi-search"></i></button>
-          </form>
+          <!-- SECCIÓN MI CUENTA -->
+          <div class="account-dropdown">
+            <button class="btn-account" onclick="toggleAccountMenu()">
+              <i class="bi bi-person-circle"></i>
+              <span>Mi Cuenta</span>
+              <i class="bi bi-chevron-down"></i>
+            </button>
+          
+            <div id="accountMenu" class="account-menu">
+              <div class="account-menu-header">
+                <i class="bi bi-person-circle"></i>
+                <span>Iniciar sesión</span>
+              </div>
+          
+              <!-- FORMULARIO DE INICIO DE SESIÓN -->
+              <form id="loginForm" class="login-form">
+                <input type="email" placeholder="Ej: ejemplo@mail.com" required />
+                <div class="password-container">
+                  <input type="password" placeholder="Ingrese su contraseña" required />
+                  <i class="bi bi-eye"></i>
+                </div>
+                <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+          
+                <div class="terms">
+                  <input type="checkbox" id="terms" required />
+                  <label for="terms">
+                    Acepto los <a href="#">Términos</a> y la <a href="#">Política</a>.
+                  </label>
+                </div>
+          
+                <button type="submit" class="btn-login">Entrar</button>
+          
+                <div class="divider"><span>O iniciar con</span></div>
+                <div class="social-login">
+                  <button type="button" class="btn-social google"><i class="bi bi-google"></i> Google</button>
+                  <button type="button" class="btn-social facebook"><i class="bi bi-facebook"></i> Facebook</button>
+                </div>
+          
+                <p class="no-account">
+                  ¿Aún no tienes cuenta?
+                  <button type="button" class="btn-register-link" onclick="openRegisterPanel()">Regístrate</button>
+                </p>
+              </form>
+            </div>
+          </div>
+          
+          <!-- PANEL LATERAL DE REGISTRO -->
+          <div id="registerPanel" class="register-panel">
+            <div class="panel-content">
+              <button class="close-panel" onclick="closeRegisterPanel()">✕</button>
+              <h2>Crear cuenta</h2>
+              <form id="registerForm" class="register-form">
+                <input type="text" placeholder="Nombre completo" required />
+                <input type="email" placeholder="Correo electrónico" required />
+                <input type="password" placeholder="Contraseña" required />
+                <input type="password" placeholder="Confirmar contraseña" required />
+                <div class="terms">
+                  <input type="checkbox" id="terms2" required />
+                  <label for="terms2">
+                    Acepto los <a href="#">Términos y Condiciones</a> y la
+                    <a href="#">Política de Privacidad</a>.
+                  </label>
+                </div>
+                <button type="submit" class="btn-register">Registrarme</button>
+          
+                <div class="divider"><span>O registrarse con</span></div>
+                <div class="social-login">
+                  <button type="button" class="btn-social google"><i class="bi bi-google"></i> Google</button>
+                  <button type="button" class="btn-social facebook"><i class="bi bi-facebook"></i> Facebook</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
         </div>
       </div>
+  
     </div>
   </header>
+
   <main class="main">
 
   <!-- Info Bar Section -->
@@ -122,13 +198,13 @@
               <div class="zone zone-1">
               </div>
               <div class="zone zone-2 adaptar">
-                <button class="zone-btn">Ver mas</button>
+                <button class="zone-btn" onclick="location.href='productos.html#laptops'">Ver mas</button>
               </div>
               <div class="zone zone-3">
-                <button class="zone-btn">Ver mas</button>
+                <button class="zone-btn" onclick="location.href='productos.html#smartphones'">Ver mas</button>
               </div>
               <div class="zone zone-4">
-                <button class="zone-btn">Ver mas</button>
+                <button class="zone-btn" onclick="location.href='productos.html#auriculares'">Ver mas</button>
               </div>
             </div>
           </div>
@@ -176,7 +252,7 @@
 
 
     <!-- Featured Services Section -->
-    <section id="Porque_elegirnos" class="featured-services section">
+    <section id="Porque_elegirnos" class="featured-services section pt-5">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -1343,5 +1419,4 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>

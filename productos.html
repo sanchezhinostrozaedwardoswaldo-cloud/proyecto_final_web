@@ -1441,6 +1441,270 @@
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/js/producto.js"></script>
     
+    <!-- Modal Checkout -->
+<div id="checkoutModal" class="custom-modal">
+    <div class="custom-modal-content">
+        <div class="modal-header-custom">
+            <h3><i class="bi bi-bag-check me-2"></i>Confirmar Compra</h3>
+            <button class="modal-close" onclick="closeCheckoutModal()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <div class="modal-body-custom">
+            <p class="modal-subtitle">Resumen de tu pedido:</p>
+            <div id="checkoutItems" class="checkout-items-list"></div>
+            <div class="checkout-total-row">
+                <span class="total-label">Total a pagar:</span>
+                <span id="checkoutTotal" class="total-amount">S/ 0.00</span>
+            </div>
+        </div>
+        <div class="modal-footer-custom">
+            <button class="btn-modal-secondary" onclick="closeCheckoutModal()">
+                <i class="bi bi-arrow-left me-2"></i>Seguir comprando
+            </button>
+            <button class="btn-modal-primary" onclick="confirmCheckout()">
+                <i class="bi bi-credit-card me-2"></i>Procesar Pago
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Vaciar Carrito -->
+<div id="clearCartModal" class="custom-modal">
+    <div class="custom-modal-content modal-small">
+        <div class="modal-header-custom">
+            <h3><i class="bi bi-exclamation-triangle me-2"></i>Confirmar Acción</h3>
+            <button class="modal-close" onclick="closeClearCartModal()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <div class="modal-body-custom">
+            <p class="modal-warning-text">¿Estás seguro de que quieres vaciar el carrito?</p>
+            <p class="modal-warning-subtext">Esta acción no se puede deshacer.</p>
+        </div>
+        <div class="modal-footer-custom">
+            <button class="btn-modal-secondary" onclick="closeClearCartModal()">
+                <i class="bi bi-x-circle me-2"></i>Cancelar
+            </button>
+            <button class="btn-modal-danger" onclick="confirmClearCart()">
+                <i class="bi bi-trash me-2"></i>Vaciar Carrito
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Pago -->
+<div id="paymentModal" class="custom-modal">
+    <div class="custom-modal-content modal-large">
+        <div class="modal-header-custom">
+            <h3><i class="bi bi-credit-card me-2"></i>Métodos de Pago</h3>
+            <button class="modal-close" onclick="closePaymentModal()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <div class="modal-body-custom">
+            <!-- Métodos de pago -->
+            <div class="payment-methods-grid">
+                <div class="payment-method-option active" data-method="card" onclick="selectPaymentMethod('card')">
+                    <div class="payment-icon">
+                        <i class="bi bi-credit-card-2-front"></i>
+                    </div>
+                    <span class="payment-method-name">Tarjeta</span>
+                    <div class="payment-check">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                </div>
+                
+                <div class="payment-method-option" data-method="yape" onclick="selectPaymentMethod('yape')">
+                    <div class="payment-icon" style="background: linear-gradient(135deg, #6c2c91 0%, #8b3a9f 100%);">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <span class="payment-method-name">Yape</span>
+                    <div class="payment-check">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                </div>
+                
+                <div class="payment-method-option" data-method="plin" onclick="selectPaymentMethod('plin')">
+                    <div class="payment-icon" style="background: linear-gradient(135deg, #00a9e0 0%, #0099cc 100%);">
+                        <i class="bi bi-wallet2"></i>
+                    </div>
+                    <span class="payment-method-name">Plin</span>
+                    <div class="payment-check">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                </div>
+                
+                <div class="payment-method-option" data-method="bcp" onclick="selectPaymentMethod('bcp')">
+                    <div class="payment-icon" style="background: linear-gradient(135deg, #002a8d 0%, #003db8 100%);">
+                        <i class="bi bi-bank"></i>
+                    </div>
+                    <span class="payment-method-name">BCP</span>
+                    <div class="payment-check">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formularios de pago -->
+            <form id="paymentForm" class="payment-form">
+                <!-- Formulario Tarjeta -->
+                <div id="cardForm" class="payment-form-content">
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-credit-card me-2"></i>Número de Tarjeta
+                        </label>
+                        <input type="text" class="form-control-custom" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-person me-2"></i>Nombre del Titular
+                        </label>
+                        <input type="text" class="form-control-custom" placeholder="JUAN PÉREZ" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="bi bi-calendar-event me-2"></i>Fecha de Expiración
+                            </label>
+                            <input type="text" class="form-control-custom" placeholder="MM/AA" maxlength="5" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="bi bi-lock me-2"></i>CVV
+                            </label>
+                            <input type="text" class="form-control-custom" placeholder="123" maxlength="4" required>
+                        </div>
+                    </div>
+
+                    <div class="security-badge">
+                        <i class="bi bi-shield-check me-2"></i>
+                        Pago seguro encriptado SSL
+                    </div>
+                </div>
+
+                <!-- Formulario Yape -->
+                <div id="yapeForm" class="payment-form-content" style="display: none;">
+                    <div class="qr-payment-container">
+                        <div class="qr-placeholder">
+                            <i class="bi bi-qr-code"></i>
+                            <p>Código QR Yape</p>
+                        </div>
+                        <div class="qr-instructions">
+                            <h5><i class="bi bi-info-circle me-2"></i>Instrucciones:</h5>
+                            <ol>
+                                <li>Abre tu app Yape</li>
+                                <li>Escanea el código QR</li>
+                                <li>Confirma el pago</li>
+                                <li>Ingresa tu número de operación</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-hash me-2"></i>Número de Operación
+                        </label>
+                        <input type="text" class="form-control-custom" placeholder="000123456789" required>
+                    </div>
+                </div>
+
+                <!-- Formulario Plin -->
+                <div id="plinForm" class="payment-form-content" style="display: none;">
+                    <div class="qr-payment-container">
+                        <div class="qr-placeholder" style="background: linear-gradient(135deg, #e6f7ff 0%, #cceeff 100%);">
+                            <i class="bi bi-qr-code" style="color: #00a9e0;"></i>
+                            <p style="color: #00a9e0;">Código QR Plin</p>
+                        </div>
+                        <div class="qr-instructions">
+                            <h5><i class="bi bi-info-circle me-2"></i>Instrucciones:</h5>
+                            <ol>
+                                <li>Abre tu app Plin</li>
+                                <li>Selecciona "Pagar con QR"</li>
+                                <li>Escanea el código</li>
+                                <li>Confirma el monto</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-phone me-2"></i>Número de Celular
+                        </label>
+                        <input type="tel" class="form-control-custom" placeholder="999 888 777" required>
+                    </div>
+                </div>
+
+                <!-- Formulario BCP -->
+                <div id="bcpForm" class="payment-form-content" style="display: none;">
+                    <div class="bank-transfer-info">
+                        <h5><i class="bi bi-bank me-2"></i>Datos para Transferencia</h5>
+                        <div class="bank-detail-item">
+                            <span class="bank-label">Banco:</span>
+                            <span class="bank-value">BCP - Banco de Crédito del Perú</span>
+                        </div>
+                        <div class="bank-detail-item">
+                            <span class="bank-label">Cuenta Corriente:</span>
+                            <span class="bank-value">191-1234567-0-89</span>
+                        </div>
+                        <div class="bank-detail-item">
+                            <span class="bank-label">CCI:</span>
+                            <span class="bank-value">002-191-001234567089-91</span>
+                        </div>
+                        <div class="bank-detail-item">
+                            <span class="bank-label">Titular:</span>
+                            <span class="bank-value">PixelTech SAC</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-hash me-2"></i>Número de Operación
+                        </label>
+                        <input type="text" class="form-control-custom" placeholder="Ingresa el número de operación" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="bi bi-calendar me-2"></i>Fecha de Transferencia
+                        </label>
+                        <input type="date" class="form-control-custom" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer-custom">
+            <button class="btn-modal-secondary" onclick="goBackToCheckout()">
+                <i class="bi bi-arrow-left me-2"></i>Volver
+            </button>
+            <button class="btn-modal-primary" onclick="processPayment()">
+                <i class="bi bi-check-circle me-2"></i>Confirmar Pago
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Éxito -->
+<div id="successModal" class="custom-modal">
+    <div class="custom-modal-content modal-small">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <h3>¡Pago Exitoso!</h3>
+            <p>Tu pedido ha sido procesado correctamente</p>
+            <p class="success-method">
+                Método: <strong id="successMethod">Tarjeta</strong>
+            </p>
+            <div class="success-animation">
+                <div class="success-confetti"></div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>

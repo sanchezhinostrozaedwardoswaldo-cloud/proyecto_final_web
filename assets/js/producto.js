@@ -83,11 +83,22 @@ function toggleCart() {
 }
 
 function clearCart() {
-    if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
-        cart = [];
-        updateCart();
-        showNotification('Carrito vaciado');
-    }
+    showClearCartModal();
+}
+
+function confirmClearCart() {
+    cart = [];
+    updateCart();
+    closeClearCartModal();
+    showNotification('Carrito vaciado');
+}
+
+function showClearCartModal() {
+    document.getElementById('clearCartModal').style.display = 'flex';
+}
+
+function closeClearCartModal() {
+    document.getElementById('clearCartModal').style.display = 'none';
 }
 
 function checkout() {
@@ -97,13 +108,88 @@ function checkout() {
     }
 
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const items = cart.map(item => `${item.quantity}x ${item.name}`).join('\n');
+    const items = cart.map(item => `
+        <div class="checkout-item">
+            <span class="item-quantity">${item.quantity}x</span>
+            <span class="item-name">${item.name}</span>
+            <span class="item-price">S/ ${(item.price * item.quantity).toFixed(2)}</span>
+        </div>
+    `).join('');
 
-    alert(`Procesando pago...\n\nProductos:\n${items}\n\nTotal: S/ ${total.toFixed(2)}\n\n¡Gracias por tu compra!`);
+    document.getElementById('checkoutItems').innerHTML = items;
+    document.getElementById('checkoutTotal').textContent = `S/ ${total.toFixed(2)}`;
+    document.getElementById('checkoutModal').style.display = 'flex';
+}
 
+function confirmCheckout() {
+    closeCheckoutModal();
+    showPaymentModal();
+}
+
+function closeCheckoutModal() {
+    document.getElementById('checkoutModal').style.display = 'none';
+}
+
+function showPaymentModal() {
+    document.getElementById('paymentModal').style.display = 'flex';
+    // Seleccionar tarjeta por defecto
+    selectPaymentMethod('card');
+}
+
+function closePaymentModal() {
+    document.getElementById('paymentModal').style.display = 'none';
+    // Limpiar formulario
+    document.getElementById('paymentForm').reset();
+}
+
+function selectPaymentMethod(method) {
+    // Remover clase active de todos
+    document.querySelectorAll('.payment-method-option').forEach(option => {
+        option.classList.remove('active');
+    });
+    
+    // Agregar clase active al seleccionado
+    document.querySelector(`[data-method="${method}"]`).classList.add('active');
+    
+    // Ocultar todos los formularios
+    document.querySelectorAll('.payment-form-content').forEach(form => {
+        form.style.display = 'none';
+    });
+    
+    // Mostrar formulario seleccionado
+    document.getElementById(`${method}Form`).style.display = 'block';
+}
+
+function processPayment() {
+    const activeMethod = document.querySelector('.payment-method-option.active');
+    const methodName = activeMethod.querySelector('.payment-method-name').textContent;
+    
+    // Aquí validarías los datos del formulario
+    // Por ahora solo mostramos mensaje de éxito
+    
+    closePaymentModal();
     cart = [];
     updateCart();
     toggleCart();
+    showSuccessModal(methodName);
+}
+
+function showSuccessModal(method) {
+    document.getElementById('successMethod').textContent = method;
+    document.getElementById('successModal').style.display = 'flex';
+    
+    setTimeout(() => {
+        closeSuccessModal();
+    }, 3000);
+}
+
+function closeSuccessModal() {
+    document.getElementById('successModal').style.display = 'none';
+}
+
+function goBackToCheckout() {
+    closePaymentModal();
+    checkout();
 }
 
 function showNotification(message) {
@@ -230,9 +316,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.querySelectorAll('.btn-add-cart').forEach(button => {
     button.addEventListener('click', () => {
-        const name = button.dataset.name;
-        const price = parseFloat(button.dataset.price);
-        addToCart(name, price);
+        // Solo ejecutar si tiene data-name (para evitar duplicados con onclick)
+        if (button.dataset.name) {
+            const name = button.dataset.name;
+            const price = parseFloat(button.dataset.price);
+            addToCart(name, price);
+        }
     });
 });
 

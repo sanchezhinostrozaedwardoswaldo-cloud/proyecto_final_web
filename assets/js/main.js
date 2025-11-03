@@ -364,3 +364,45 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// Seleccionamos los elementos
+const accountMenu = document.getElementById('accountMenu');
+const accountButton = document.querySelector('.btn-account');
+
+// Función para alternar el menú
+function toggleAccountMenu() {
+  accountMenu.classList.toggle('active');
+}
+
+// Cerrar el menú si se hace clic fuera
+window.addEventListener('click', (e) => {
+  if (!e.target.closest('.account-dropdown')) {
+    accountMenu.classList.remove('active');
+  }
+});
+
+// Funciones para el menú de cuenta y panel de registro
+
+function toggleAccountMenu() {
+  document.getElementById("accountMenu").classList.toggle("show");
+}
+
+function openRegisterPanel() {
+  document.getElementById("registerPanel").classList.add("show");
+}
+
+function closeRegisterPanel() {
+  document.getElementById("registerPanel").classList.remove("show");
+}
+
+/* Opcional: cerrar menú si se hace clic fuera */
+document.addEventListener("click", function (e) {
+  const menu = document.getElementById("accountMenu");
+  const button = document.querySelector(".btn-account");
+  if (!menu.contains(e.target) && !button.contains(e.target)) {
+    menu.classList.remove("show");
+  }
+});
+
+
+
+

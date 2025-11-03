@@ -54,10 +54,19 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
+
 body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+  width: 100%;
+  min-width: 200px; /* ancho mínimo */
+  overflow-x: hidden; /* prevenir scroll horizontal */
+
+}
+html {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 a {
@@ -143,20 +152,34 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
+  position: fixed !important;
+  width: 100%;
+  top: 0;
   color: var(--default-color);
   background-color: var(--background-color);
   transition: all 0.5s;
-  z-index: 997;
-  padding: 5px 0 0 0;
+  z-index: 1001;
+  padding: 12px 0 0 0;
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
+/* Ajuste cuando se hace scroll */
+.scrolled .header {
+  top: 0; /* Se pega arriba ocultando el top-bar */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
 .header .top-row {
-  padding-bottom: 5px;
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .header .top-row .logo {
   text-decoration: none;
+  flex-shrink: 0;
+  margin-right: 5px;
 }
 
 .header .top-row .logo img {
@@ -165,11 +188,161 @@ h6 {
 }
 
 .header .top-row .logo .sitename {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 600;
   color: var(--heading-color);
   font-family: var(--heading-font);
   margin: 0;
+  white-space: nowrap;
+}
+
+/* Botón de Categorías estilo Metro */
+.categories-dropdown {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.btn-categories {
+  background: transparent;
+  color: #222222;
+  border: none;
+  padding: 5px 15px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.btn-categories:hover {
+  color: #ff6b35;
+  border-color: #ff6b35;
+  
+}
+
+.btn-categories i:first-child {
+  font-size: 1.1rem;
+}
+
+.btn-categories i:last-child {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.categories-dropdown:hover .btn-categories i:last-child {
+  transform: rotate(180deg);
+}
+
+/* Menú de categorías */
+.categories-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 280px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.categories-dropdown:hover .categories-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  color: #2d3436;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.category-item:hover {
+  background: #f8f9fa;
+  color: #ff6b35;
+}
+
+.category-item i {
+  font-size: 1rem;
+  width: 24px;
+  text-align: center;
+}
+
+/* Buscador expandido */
+.header .search-form {
+  position: relative;
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: auto;
+}
+
+.header .search-form .form-control {
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  padding: 10px 45px 10px 20px;
+  background: transparent;
+  transition: 0.3s;
+  color: #000;
+  font-size: 14px;
+  border-radius: 25px;
+  width: 100%;
+}
+
+.header .search-form .form-control::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.header .search-form .form-control:focus {
+  border-color: var(--accent-color);
+  box-shadow: none;
+}
+
+.header .search-form button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 15px;
+  margin: 0;
+  color: var(--heading-color);
+  transition: 0.3s;
+}
+
+.header .search-form button:hover {
+  color: var(--accent-color);
+}
+
+/* Acciones de la derecha */
+.header-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+}
+
+.header .social-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
 .header .social-links a {
@@ -184,67 +357,12 @@ h6 {
   color: var(--accent-color);
 }
 
-@media (max-width: 1200px) {
-  .header .social-links {
-    padding-right: 35px;
-  }
-}
-
-.header .search-form {
-  position: relative;
-  width: 250px;
-  display: flex;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-}
-
-.header .search-form .form-control {
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  padding: 7px 40px 7px 15px;
-  background: transparent;
-  transition: 0.3s;
-  color: var(--default-color);
-  font-size: 14px;
-}
-
-.header .search-form .form-control::placeholder {
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
-}
-
-.header .search-form .form-control:focus {
-  border-color: var(--accent-color);
-  box-shadow: none;
-}
-
-.header .search-form button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  border: 0;
-  background: none;
-  font-size: 16px;
-  padding: 0 15px;
-  margin: 0;
-  color: var(--heading-color);
-  transition: 0.3s;
-}
-
-.header .search-form button:hover {
-  color: var(--accent-color);
-}
-
-@media (max-width: 1200px) {
-  .header .search-form {
-    display: none;
-  }
-}
-
+/* Navegación */
 .header .nav-wrap {
-  background-color:var(--default-color), transparent 96%;
+  background-color: color-mix(in srgb, var(--default-color), transparent 96%);
   display: flex;
   justify-content: center;
+  margin: 0 -20px;
 }
 
 .header .mobile-nav-toggle {
@@ -253,22 +371,121 @@ h6 {
   right: 5px;
 }
 
-/* Global Header on Scroll
-------------------------------*/
+/* Responsive */
+@media (max-width: 1200px) {
+  .header .social-links {
+    display: none !important;
+  }
+  
+  .btn-categories span {
+    display: none;
+  }
+  
+  .btn-categories {
+    padding: 10px 15px;
+  }
+  
+  .header .search-form {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 992px) {
+  .header .search-form {
+    max-width: 600px;
+  }
+  
+  .header .top-row {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header .search-form {
+    display: none;
+  }
+  .btn-categories {
+    padding: 10px 10px;
+  }
+}
+
+/* Global Header on Scroll */
 .scrolled .header {
   --background-color: #ffffff;
 }
 
 /*--------------------------------------------------------------
-# Barra informativa tipo EFE (versión ligeramente más grande)
+# Barra Superior 
 --------------------------------------------------------------*/
+.top-bar {
+  position: sticky;
+  top: 0;
+  background-color: #f7f7f7;
+  padding: 5px 0;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1002;
+  width: 100%;
+}
+
+.top-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+  display: flex;
+}
+
+.top-links li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.top-links li a:hover {
+  color: #ff6b35;
+}
+
+/* Ajuste general del header */
+.header {
+  padding-top: 0;
+}
+
+/* Ajuste entre filas */
+.top-row {
+  padding: 10px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .top-bar {
+    font-size: 12px;
+    justify-content: center;
+  }
+
+  .top-links {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+
+
+/*------------------------
+# Barra informativa 
+------------------------*/
 
 #section-info-bar {
-  background-color: #000; /* negro elegante */
+  margin-top: 100px;
+  background-color: #000; 
   color: #fff;
-  padding: 0.9rem 0; /* antes 0.6rem */
+  padding: 0.9rem 0; 
   font-family: "Lato", sans-serif;
-  font-size: 14px; /* reducido de 15px */
+  font-size: 14px; 
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
@@ -278,30 +495,30 @@ h6 {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.2rem; /* reducido de 2rem */
-  max-width: 100%; /* usar todo el ancho disponible */
-  padding-left: 15px; /* reducir padding lateral */
-  padding-right: 15px; /* reducir padding lateral */
+  gap: 1.2rem; 
+  max-width: 100%; 
+  padding-left: 15px; 
+  padding-right: 15px; 
 }
 
 .info-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* reducido de 0.6rem */
+  gap: 0.5rem;
   transition: 0.3s ease;
-  white-space: nowrap; /* evita que el texto se parta en dos líneas */
+  white-space: nowrap; 
 }
 
 .info-item i {
-  color: #ff7b00; /* naranja principal */
-  font-size: 18px; /* reducido de 20px */
-  flex-shrink: 0; /* evita que el icono se encoja */
+  color: #ff7b00; 
+  font-size: 18px; 
+  flex-shrink: 0; 
 }
 
 .info-item span {
   color: #fff;
   letter-spacing: 0.3px;
-  font-size: 14px; /* asegurar tamaño consistente */
+  font-size: 14px; 
 }
 
 .info-item:hover {
@@ -928,6 +1145,15 @@ h6 {
   visibility: visible;
   opacity: 1;
 }
+
+@media (max-width: 480px) {
+  .scroll-top{
+    right: 10px;
+    bottom: 10px;
+    transform: scale(0.9);
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
@@ -5501,9 +5727,9 @@ section,
 
   /* Indicadores del carrusel más pequeños */
   .carousel-indicators-custom button {
-    width: 8px;
-    height: 8px;
-    margin: 0 3px;
+    width: 1px;
+    height: 10px;
+    margin: 0 2px;
   }
 
   .zone-btn{
@@ -5514,5 +5740,275 @@ section,
   }
 }
 
+/* --- BOTÓN MI CUENTA --- */
+.account-dropdown {
+  position: relative;
+}
 
+.btn-account {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn-account:hover {
+  background: #e05500;
+}
 
+/* --- DESPLEGABLE --- */
+.account-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  padding: 15px;
+  width: 310px;
+  display: none;
+  z-index: 50;
+}
+.account-menu.show {
+  display: block;
+}
+
+/* --- HEADER --- */
+.account-menu-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* --- FORMULARIO LOGIN --- */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.login-form input:focus {
+  border-color: #ff6600;
+}
+
+.password-container {
+  position: relative;
+}
+.password-container i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+}
+.forgot {
+  text-align: left;
+  font-size: 0.85em;
+  color: #444;
+  text-decoration: none;
+}
+
+.terms {
+  width: 100%;
+  display: flex;          
+  align-items: center; 
+  gap: 6px;
+  font-size: 0.8em;
+  color: #333;
+}
+.terms input {
+  width: auto;
+  margin: 0;
+}
+
+.terms a {
+  color: #ff6600;
+  text-decoration: none;
+}
+
+.btn-login {
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+.btn-login:hover {
+  background: #e05500;
+}
+
+/* --- DIVIDER Y SOCIAL BUTTONS --- */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 10px 0;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+.divider span {
+  padding: 0 10px;
+  font-size: 0.85em;
+  color: #555;
+}
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.btn-social {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  background: #fff;
+  transition: background 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.btn-social.google:hover {
+  background: #db4437;
+  color: #fff;
+  border-color: #db4437;
+}
+.btn-social.facebook:hover {
+  background: #1877f2;
+  color: #fff;
+  border-color: #1877f2;
+}
+
+.no-account {
+  text-align: center;
+  font-size: 0.9em;
+}
+.btn-register-link {
+  background: none;
+  border: none;
+  color: #ff6600;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* --- PANEL DE REGISTRO --- */
+.register-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 400px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -3px 0 10px rgba(0,0,0,0.3);
+  transition: right 0.4s ease;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.register-panel.show {
+  right: 0;
+}
+.register-form .terms {
+  width: 100%;
+  display: flex;          
+  gap: 6px;
+  font-size: 0.8em;
+  color: #333;
+  text-align: left;
+}
+.register-form .terms input[type="checkbox"] {
+  width: 14px;      
+  height: 14px;    
+  margin-top: 2px;  
+  accent-color: #ff6600; 
+  cursor: pointer;
+  flex-shrink: 0;
+  transform: scale(0.9); 
+}
+.panel-content {
+  width: 80%;
+  position: relative;
+  text-align: center;
+}
+
+.close-panel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.register-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.register-form input:focus {
+  border-color: #ff6600;
+}
+
+.btn-register {
+  background: #ff6600;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+.btn-register:hover {
+  background: #e05500;
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 400px) {
+  .register-panel {
+    width: 100%;
+  }
+  .panel-content {
+    width: 90%;
+  }
+}
+
+@media (max-width: 400px) {
+  .account-dropdown span {
+    display: none; /* Oculta el texto */
+  }
+}
