@@ -5548,71 +5548,78 @@ section,
   }
 }
 
-/* ==============================
-  ZONAS INTERACTIVAS PERSONALIZADAS
-============================== */
-/* Contenedor único con clip-path compuesto */
-.custom-hero-zones {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none; /* los hijos capturan los clics */
-  clip-path: polygon(
-    /* Zona 1 */
-    0% 0%, 38.5% 0%, 31% 100%, 0% 100%,
-    /* Zona 2 */
-    38% 0%, 71% 0%, 58% 100%, 31% 100%,
-    /* Zona 3 */
-    71% 0%, 100% 0%, 100% 100%, 58% 100%
-  );
-  background: transparent; /* solo sirve de máscara visual, no colorea */
-}
 
-/* Zonas clicables invisibles */
-.czone {
-  position: absolute;
+.hero-svg {
+  width: 100%;
   height: 100%;
-  pointer-events: auto; /* recibir clics */
-  cursor: pointer;
 }
 
-/* Cada zona absoluta para alinearse con la forma */
-.czone-1 { left: 0; width: 38.5%; }
-.czone-2 { left: 38%; width: 33%; }
-.czone-3 { right: 0; width: 29%; }
 
-/* Botones centrados */
+/* poligonos */
+.czone-svg {
+  fill: rgba(0,0,0,0.0);
+  transition: fill 0.25s ease;
+  cursor: pointer;
+  pointer-events: visiblePainted;
+}
+
+.czone-group:hover .czone-svg {
+  fill: rgba(0,0,0,0.3);
+}
+
+/* botón */
 .czone-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 10px 20px;
-  background: rgba(255,255,255,0.85);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  z-index: 5;
-}
-
-/* Cada botón centrado sobre su zona */
-.btn-1 { left: 19%; } /* mitad de la zona 1 */
-.btn-2 { left: 54.5%; } /* mitad de la zona 2 */
-.btn-3 { left: 84.5%; } /* mitad de la zona 3 */
-
-/* Hover visual solo en la zona (usando pseudo-elementos) */
-.czone::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.15);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity .25s ease;
   pointer-events: none;
 }
 
-.czone:hover::before {
+.czone-group:hover .czone-btn {
   opacity: 1;
+  pointer-events: auto;
 }
+
+.czone-real-btn:hover {
+  background: rgba(255, 87, 34, 1);
+}
+
+/* Botón oculto por defecto */
+.czone-real-btn {
+  display: none;
+  padding: 5px 5px;
+  width: 150px;
+  height: 28px;
+  background-color: rgba(255, 87, 34, 0.9);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Mostrar botón solo cuando pasa por la zona */
+.czone-group:hover .czone-real-btn {
+  display: block;
+}
+
+/* responsive opcional */
+@media (max-width: 768px) {
+  .czone-btn {
+    width: 1500px;
+    height: 50px;
+  }
+  .czone-real-btn {
+    font-size: 20px;
+    height: 50px;
+  }
+}
+
+
+
+
+
+
 
 
 

@@ -211,25 +211,57 @@
           <div class="carousel-item">
             <img src="assets/img/img_banner/Innovación al alcance de tus manos (1).png" alt="Producto 2">
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item" style="position: relative;">
             <img src="assets/img/img_banner/Innovación al alcance de tus manos (2).png" alt="Producto 3">
           
-            <!-- Contenedor único de zonas -->
-            <div class="custom-hero-zones">
-              <!-- Zonas invisibles para clic -->
-              <div class="czone czone-1" onclick="location.href='productos.html#laptops'"></div>
-              <div class="czone czone-2" onclick="location.href='productos.html#smartphones'"></div>
-              <div class="czone czone-3" onclick="location.href='productos.html#auriculares'"></div>
+            <svg class="hero-svg" viewBox="0 0 1000 400" preserveAspectRatio="none"
+              style="position:absolute; top:0; left:0; width:100%; height:100%;">
           
-              <!-- Botones encima -->
-              <button class="czone-btn btn-1" onclick="location.href='productos.html#laptops'">Ver más</button>
-              <button class="czone-btn btn-2" onclick="location.href='productos.html#smartphones'">Ver más</button>
-              <button class="czone-btn btn-3" onclick="location.href='productos.html#auriculares'">Ver más</button>
-            </div>
+              <!-- Zona 1 -->
+              <g class="czone-group">
+                <polygon class="czone-svg" points="0,0 379,0 308,400 0,400"></polygon>
+          
+                <foreignObject x="80" y="170" width="150" height="200">
+                  <div xmlns="http://www.w3.org/1999/xhtml" class="czone-content">
+                    <a href="productos.html#smartphones">
+                      <button class="czone-real-btn">Ver más</button>
+                    </a>
+                  </div>
+                </foreignObject>
+              </g>
+          
+              <!-- Zona 2 -->
+              <g class="czone-group">
+                <polygon class="czone-svg" points="378,0 690,0 619,400 308,399"></polygon>
+          
+                <foreignObject x="430" y="170" width="150" height="200">
+                  <div xmlns="http://www.w3.org/1999/xhtml" class="czone-content">
+                    <a href="productos.html#gadgets">
+                      <button class="czone-real-btn">Ver más</button>
+                    </a>
+                  </div>
+                </foreignObject>
+              </g>
+          
+              <!-- Zona 3 -->
+              <g class="czone-group">
+                <polygon class="czone-svg" points="689.5,0 1000,0 1000,400 618,400"></polygon>
+          
+                <foreignObject x="780" y="170" width="150" height="200">
+                  <div xmlns="http://www.w3.org/1999/xhtml" class="czone-content">
+                    <a href="productos.html#auriculares">
+                      <button class="czone-real-btn">Ver más</button>
+                    </a>
+                  </div>
+                </foreignObject>
+              </g>
+          
+            </svg>
           </div>
 
+
           <div class="carousel-item">
-            <img src="assets/img/img_banner/Innovación al alcance de tus manos.png" alt="Producto 3">
+            <img src="assets/img/img_banner/Innovación al alcance de tus manos(3) (1).png" alt="Producto 3">
           </div>
         </div>
     
