@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios Técnicos - PixelTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/servicios.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header" class="header sticky-top">
+    <div class="container-fluid container-xl position-relative">
+
+        <div class="top-row d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center">
+                <h1 class="sitename">PixelTech</h1>
+            </a>
+
+            <div class="d-flex align-items-center">
+                <div class="social-links">
+                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                </div>
+
+                <!-- Ícono hamburguesa -->
+                <i class="mobile-nav-toggle d-xl-none bi bi-list ms-3"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-wrap d-none d-lg-block">
+        <div class="container d-flex justify-content-center position-relative">
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="#" class="active">Servicios</a></li>
+                    <li><a href="#comofunciona">¿Como funciona?</a></li>
+                    <li><a href="#garantias">Garantias y politicas</a></li>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    <li><a href="index.html#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- ✅ OFF-CANVAS (Modal del menú) -->
+<div id="mobileMenuOverlay"></div>
+
+<div id="mobileMenu" class="mobile-menu">
+    <div class="mobile-menu-header">
+        <h4>Menú</h4>
+        <i class="bi bi-x close-menu"></i>
+    </div>
+
+    <ul>
+        <li><a href="#" class="active">Servicios</a></li>
+        <li><a href="#comofunciona">¿Como funciona?</a></li>
+        <li><a href="#garantias">Garantias y politicas</a></li>
+        <li><a href="#faq">Preguntas Frecuentes</a></li>
+        <li><a href="index.html#contact">Contacto</a></li>
+    </ul>
+</div>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1 class="hero-title">
+                    <i class="fas fa-tools me-3"></i>Servicios Técnicos
+                </h1>
+                <p class="hero-subtitle">Reparación y mantenimiento especializado para todos tus dispositivos tecnológicos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Principales -->
+    <section class="service-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Soluciones profesionales para mantener tu tecnología en perfectas condiciones</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <h3 class="service-title">Reparación de Laptops</h3>
+                        <p class="service-description">Diagnóstico y reparación completa de laptops de todas las marcas</p>
+                        <ul class="service-features">
+                            <li>Cambio de pantalla y teclado</li>
+                            <li>Reemplazo de batería</li>
+                            <li>Actualización de hardware</li>
+                            <li>Limpieza profunda y pasta térmica</li>
+                            <li>Reparación de placa madre</li>
+                        </ul>
+                        <div class="service-price">Desde S/ 50</div>
+                        <p class="price-note">*Diagnóstico gratuito</p>
+                        <button class="btn-service">Solicitar Servicio</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3 class="service-title">Reparación de Computadoras</h3>
+                        <p class="service-description">Servicio técnico especializado para PCs de escritorio</p>
+                        <ul class="service-features">
+                            <li>Diagnóstico de hardware</li>
+                            <li>Instalación de componentes</li>
+                            <li>Optimización de rendimiento</li>
+                            <li>Eliminación de virus y malware</li>
+                            <li>Recuperación de datos</li>
+                        </ul>
+                        <div class="service-price">Desde S/ 40</div>
+                        <p class="price-note">*Diagnóstico gratuito</p>
+                        <button class="btn-service">Solicitar Servicio</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="service-title">Reparación de Celulares</h3>
+                        <p class="service-description">Expertos en reparación de smartphones y tablets</p>
+                        <ul class="service-features">
+                            <li>Cambio de pantalla táctil</li>
+                            <li>Reemplazo de batería</li>
+                            <li>Reparación de puerto de carga</li>
+                            <li>Cambio de cámara</li>
+                            <li>Desbloqueo y software</li>
+                        </ul>
+                        <div class="service-price">Desde S/ 60</div>
+                        <p class="price-note">*Diagnóstico gratuito</p>
+                        <button class="btn-service">Solicitar Servicio</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3 class="service-title">Reparación de Consolas</h3>
+                        <p class="service-description">Servicio técnico para PlayStation, Xbox y Nintendo</p>
+                        <ul class="service-features">
+                            <li>Reparación de lectores</li>
+                            <li>Cambio de controles</li>
+                            <li>Limpieza y mantenimiento</li>
+                            <li>Actualización de disco duro</li>
+                            <li>Solución de problemas de software</li>
+                        </ul>
+                        <div class="service-price">Desde S/ 70</div>
+                        <p class="price-note">*Diagnóstico gratuito</p>
+                        <button class="btn-service">Solicitar Servicio</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-hdd"></i>
+                        </div>
+                        <h3 class="service-title">Recuperación de Datos</h3>
+                        <p class="service-description">Recuperamos tu información valiosa de discos dañados</p>
+                        <ul class="service-features">
+                            <li>Discos duros mecánicos y SSD</li>
+                            <li>Memorias USB y SD</li>
+                            <li>Dispositivos formateados</li>
+                            <li>Sistemas dañados</li>
+                            <li>Confidencialidad garantizada</li>
+                        </ul>
+                        <div class="service-price">Desde S/ 100</div>
+                        <p class="price-note">*Evaluación sin costo</p>
+                        <button class="btn-service">Solicitar Servicio</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="service-title">Mantenimiento Preventivo</h3>
+                        <p class="service-description">Prolonga la vida útil de tus equipos tecnológicos</p>
+                        <ul class="service-features">
+                            <li>Limpieza interna completa</li>
+                            <li>Cambio de pasta térmica</li>
+                            <li>Optimización de software</li>
+                            <li>Actualización de drivers</li>
+                            <li>Informe de estado general</li>
+                        </ul>
+                        <div class="service-price">Desde S/ 35</div>
+                        <p class="price-note">*Paquetes corporativos disponibles</p>
+                        <button class="btn-service">Solicitar Servicio</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso de Servicio -->
+    <section id="comofunciona" class="service-section" style="background: #f8f9fa;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">¿Cómo Funciona?</h2>
+                <p class="section-subtitle">Proceso simple y transparente de principio a fin</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4 class="step-title">Diagnóstico</h4>
+                        <p class="step-description">Trae tu equipo y realizamos un diagnóstico completo sin costo</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4 class="step-title">Cotización</h4>
+                        <p class="step-description">Te informamos el problema y el costo exacto de la reparación</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4 class="step-title">Reparación</h4>
+                        <p class="step-description">Nuestros técnicos certificados reparan tu equipo con repuestos originales</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4 class="step-title">Entrega</h4>
+                        <p class="step-description">Probamos todo y te entregamos tu equipo funcionando perfectamente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garantías -->
+    <section id="garantias" class="service-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Garantías y Políticas</h2>
+                <p class="section-subtitle">Tu tranquilidad es nuestra prioridad</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="guarantee-card">
+                        <h3 class="guarantee-title">
+                            <i class="fas fa-shield-alt"></i>
+                            Garantía de Reparación
+                        </h3>
+                        <p class="guarantee-text">Todos nuestros servicios de reparación incluyen garantía escrita que cubre:</p>
+                        <ul class="guarantee-list">
+                            <li>30 días de garantía en reparaciones de hardware</li>
+                            <li>15 días en servicios de software</li>
+                            <li>90 días en repuestos instalados</li>
+                            <li>Garantía no cubre daños por mal uso posterior</li>
+                            <li>Revisión gratuita si el problema persiste</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="guarantee-card">
+                        <h3 class="guarantee-title">
+                            <i class="fas fa-file-contract"></i>
+                            Proceso de Garantía
+                        </h3>
+                        <p class="guarantee-text">Si necesitas hacer uso de tu garantía, sigue estos pasos:</p>
+                        <ul class="guarantee-list">
+                            <li>Presenta tu ticket de servicio original</li>
+                            <li>El equipo debe estar en las mismas condiciones</li>
+                            <li>Realizamos nueva evaluación sin costo</li>
+                            <li>Reparamos o reemplazamos según corresponda</li>
+                            <li>Sin costos adicionales durante el período de garantía</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="guarantee-card">
+                        <h3 class="guarantee-title">
+                            <i class="fas fa-check-circle"></i>
+                            Repuestos Originales
+                        </h3>
+                        <p class="guarantee-text">Calidad garantizada en cada componente:</p>
+                        <ul class="guarantee-list">
+                            <li>Repuestos originales de fábrica</li>
+                            <li>Alternativas de alta calidad certificadas</li>
+                            <li>Transparencia en origen de componentes</li>
+                            <li>Garantía del fabricante incluida</li>
+                            <li>Stock permanente de piezas comunes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="guarantee-card">
+                        <h3 class="guarantee-title">
+                            <i class="fas fa-lock"></i>
+                            Privacidad y Seguridad
+                        </h3>
+                        <p class="guarantee-text">Tu información está completamente protegida:</p>
+                        <ul class="guarantee-list">
+                            <li>Confidencialidad absoluta de tus datos</li>
+                            <li>No accedemos a información personal</li>
+                            <li>Área de trabajo con cámaras de seguridad</li>
+                            <li>Técnicos certificados y confiables</li>
+                            <li>Backup de seguridad recomendado antes del servicio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="service-section" style="background: #f8f9fa;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <p class="section-subtitle">Respuestas a las dudas más comunes</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿Cuánto tiempo tarda una reparación?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            El tiempo varía según la complejidad. Reparaciones simples como cambio de pantalla suelen
+                            completarse en 24 a 48 horas. Procesos más profundos como placa madre o recuperación de datos
+                            pueden tardar de 3 a 7 días hábiles. Siempre recibirás un tiempo estimado claro después del
+                            diagnóstico.
+                        </div>
+                    </div>
+    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿El diagnóstico tiene costo?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            No. El diagnóstico es completamente gratuito. Solo pagas si apruebas el servicio. Antes de
+                            empezar, te mostramos una cotización transparente y sin sorpresas.
+                        </div>
+                    </div>
+    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿Qué pasa si no se puede reparar mi equipo?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Si la reparación no es viable o no conviene económicamente, te lo informamos con total
+                            transparencia. No pagas nada por el diagnóstico y te asesoramos sobre alternativas como
+                            reemplazo de hardware o cambio de equipo según tu presupuesto.
+                        </div>
+                    </div>
+    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿Usan repuestos originales?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Sí. Utilizamos repuestos originales y, cuando no es posible, ofrecemos alternativas de alta
+                            calidad certificadas. Siempre te mostramos las opciones antes de instalar cualquier componente.
+                        </div>
+                    </div>
+    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿Pierdo mi información durante la reparación?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            En la mayoría de reparaciones tu información no se ve afectada. Sin embargo, recomendamos
+                            realizar un respaldo antes de cualquier servicio, especialmente en cambios de disco,
+                            reparaciones de software o problemas graves de arranque.
+                        </div>
+                    </div>
+    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿Debo dejar accesorios como cargador o funda?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Solo pedimos accesorios si son necesarios para diagnosticar el problema, como adaptadores de
+                            corriente en laptops o cargadores especiales. Fundas, micas o protectores no son necesarios.
+                        </div>
+                    </div>
+    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿Cómo sé que mi equipo está seguro?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Tu equipo está registrado en nuestro sistema interno, contamos con zona de trabajo controlada y
+                            tu información personal no es manipulada. Además, toda intervención queda documentada.
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="footer position-relative">
+        <div class="container">
+            <div class="row gy-5">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <a href="index.html" class="logo d-flex align-items-center mb-3">
+                            <span class="sitename">PixelTech</span>
+                        </a>
+                        <p class="tagline">Vendemos productos tecnológicos y ofrecemos servicios de reparación y
+                            mantenimiento</p>
+                        <div class="social-links mt-4">
+                            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="footer-links-grid">
+                        <div class="row">
+                            <div class="col-6 col-md-4">
+                                <h5>Empresa</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="sobreNosotros.html">Sobre Nosotros</a></li>
+                                    <li><a href="#">Nuestro Equipo</a></li>
+                                    <li><a href="#">Carreras</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <h5>Productos</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="#laptops">Laptops</a></li>
+                                    <li><a href="#smartphones">Smartphones</a></li>
+                                    <li><a href="#auriculares">Audio</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <h5>Soporte</h5>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Centro de Ayuda</a></li>
+                                    <li><a href="#">Contáctanos</a></li>
+                                    <li><a href="#">Términos</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer-bottom-content">
+                            <p class="mb-0">© <span class="sitename">PixelTech</span>. Todos los derechos reservados.
+                            </p>
+                            <div class="credits">Diseñado por <a href="#">Grupo2</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/servicios.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
