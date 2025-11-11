@@ -5617,8 +5617,99 @@ section,
 
 
 
+.password-container i:hover {
+  color: #f36412;
+}
 
+/* --- Modal base --- */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease forwards;
+}
 
+/* --- Imagen dentro del modal --- */
+.image-modal img {
+  max-width: 85%;
+  max-height: 85%;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255,255,255,0.2);
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.image-modal.show img {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* --- Botón de cierre --- */
+.close-modal {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: #fff;
+  font-size: 45px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-modal:hover {
+  color: #ff5252;
+  transform: rotate(90deg);
+}
+
+/* --- Animación de entrada --- */
+@keyframes fadeIn {
+  from { background: rgba(0,0,0,0); }
+  to   { background: rgba(0,0,0,0.8); }
+}
+
+/* Opcional: cursor de zoom para las miniaturas */
+.zoom-trigger {
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+.zoom-trigger:hover {
+  transform: scale(1.03);
+}
+
+/* Contenedor interno centrado */
+.modal-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Botón "Ver más" */
+.view-more-btn {
+  margin-top: 25px;
+  padding: 10px 30px;
+  background: linear-gradient(90deg, #ff5e00, #ff8800);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 94, 0, 0.4);
+}
+
+.view-more-btn:hover {
+  background: linear-gradient(90deg, #f88e37, #f59a5e);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 123, 0, 0.6);
+}
 
 
 

@@ -99,9 +99,10 @@
               <form id="loginForm" class="login-form">
                 <input type="email" placeholder="Ej: ejemplo@mail.com" required />
                 <div class="password-container">
-                  <input type="password" placeholder="Ingrese su contraseña" required />
-                  <i class="bi bi-eye"></i>
+                  <input type="password" class="password-input" placeholder="Ingrese su contraseña" required />
+                  <i class="bi bi-eye toggle-password"  style="cursor: pointer;"></i>
                 </div>
+
                 <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
           
                 <div class="terms">
@@ -115,8 +116,8 @@
           
                 <div class="divider"><span>O iniciar con</span></div>
                 <div class="social-login">
-                  <button type="button" class="btn-social google"><i class="bi bi-google"></i> Google</button>
-                  <button type="button" class="btn-social facebook"><i class="bi bi-facebook"></i> Facebook</button>
+                  <button type="button" class="btn-social google" onclick="loginWithGoogle()"><i class="bi bi-google"></i> Google</button>
+                  <button type="button" class="btn-social facebook" onclick="loginWithFacebook()"><i class="bi bi-facebook"></i> Facebook</button>
                 </div>
           
                 <p class="no-account">
@@ -135,8 +136,14 @@
               <form id="registerForm" class="register-form">
                 <input type="text" placeholder="Nombre completo" required />
                 <input type="email" placeholder="Correo electrónico" required />
-                <input type="password" placeholder="Contraseña" required />
-                <input type="password" placeholder="Confirmar contraseña" required />
+                <div class="password-container">
+                  <input type="password" class="password-input" placeholder="Contraseña" required />
+                  <i class="bi bi-eye toggle-password"  style="cursor: pointer;"></i>
+                </div>
+                <div class="password-container">
+                  <input type="password" class="password-input" placeholder="Confirma Contraseña" required />
+                  <i class="bi bi-eye toggle-password"  style="cursor: pointer;"></i>
+                </div>
                 <div class="terms">
                   <input type="checkbox" id="terms2" required />
                   <label for="terms2">
@@ -148,8 +155,8 @@
           
                 <div class="divider"><span>O registrarse con</span></div>
                 <div class="social-login">
-                  <button type="button" class="btn-social google"><i class="bi bi-google"></i> Google</button>
-                  <button type="button" class="btn-social facebook"><i class="bi bi-facebook"></i> Facebook</button>
+                  <button type="button" class="btn-social google" onclick="loginWithGoogle()"><i class="bi bi-google"></i> Google</button>
+                  <button type="button" class="btn-social facebook" onclick="loginWithFacebook()"><i class="bi bi-facebook"></i> Facebook</button>
                 </div>
               </form>
             </div>
@@ -464,7 +471,7 @@
           <div class="col-lg-4 d-flex">
             <article class="intro-panel flex-fill" data-aos="fade-right" data-aos-delay="200">
               <figure class="preview-visual mb-4">
-                <img src="assets\img\features\laptop.jpeg " alt="App preview" class="img-fluid rounded-4 shadow-sm">
+                <img src="assets\img\features\laptop.jpeg " alt="App preview" class="img-fluid rounded-4 shadow-sm zoom-trigger">
               </figure>
               <div class="intro-content">
                 <h3 class="intro-title">Laptop Gamer ASUS TUF F15</h3>
@@ -482,7 +489,7 @@
           <div class="col-lg-4 d-flex">
             <article class="intro-panel flex-fill" data-aos="fade-right" data-aos-delay="200">
               <figure class="preview-visual mb-4">
-                <img src="assets\img\features\iphone.jpeg" alt="App preview" class="img-fluid rounded-4 shadow-sm">
+                <img src="assets\img\features\iphone.jpeg" alt="App preview" class="img-fluid rounded-4 shadow-sm zoom-trigger">
               </figure>
               <div class="intro-content">
                 <h3 class="intro-title">iPhone 15 Pro (256GB)</h3>
@@ -499,7 +506,7 @@
           <div class="col-lg-4 d-flex">
             <article class="intro-panel flex-fill" data-aos="fade-right" data-aos-delay="200">
               <figure class="preview-visual mb-4">
-                <img src="assets\img\features\auriculares.jpeg" alt="App preview" class="img-fluid rounded-4 shadow-sm">
+                <img src="assets\img\features\auriculares.jpeg" alt="App preview" class="img-fluid rounded-4 shadow-sm zoom-trigger">
               </figure>
               <div class="intro-content">
                 <h3 class="intro-title">Auriculares Inalámbricos Sony WH-1000XM5</h3>
@@ -518,6 +525,17 @@
       </div>
 
     </section><!-- /Features Section -->
+
+    <!-- Modal elegante con botón -->
+    <div id="imageModal" class="image-modal">
+      <span class="close-modal">&times;</span>
+    
+      <div class="modal-inner">
+        <img class="modal-content" id="modalImage">
+        <a href="productos.html" id="viewMoreBtn" class="view-more-btn" target="_self">Ver más</a>
+      </div>
+    </div>
+
 
     <!-- Skills Section -->
     <section id="skills" class="skills section">
@@ -1463,6 +1481,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
 
 </body>
 </html>

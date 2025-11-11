@@ -403,6 +403,71 @@ document.addEventListener("click", function (e) {
   }
 });
 
+// === FUNCIÓN PARA MOSTRAR/OCULTAR CONTRASEÑAS ===
 
+// Mostrar / ocultar contraseñas (funciona en login y registro)
+const togglePasswords = document.querySelectorAll('.toggle-password');
+
+togglePasswords.forEach(icon => {
+  icon.addEventListener('click', () => {
+    const input = icon.previousElementSibling;
+    const isPassword = input.getAttribute('type') === 'password';
+    input.setAttribute('type', isPassword ? 'text' : 'password');
+
+    icon.classList.toggle('bi-eye');
+    icon.classList.toggle('bi-eye-slash');
+  });
+});
+
+    function loginWithGoogle() {
+    // Redirige al inicio de sesión de Google
+    window.location.href = "https://accounts.google.com/signin";
+  }
+
+  function loginWithFacebook() {
+    // Redirige al inicio de sesión de Facebook
+    window.location.href = "https://www.facebook.com/login";
+  }
+
+  
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImage");
+const closeModal = document.querySelector(".close-modal");
+const viewMoreBtn = document.getElementById("viewMoreBtn");
+
+// Abrir modal
+document.querySelectorAll(".zoom-trigger").forEach(img => {
+  img.addEventListener("click", () => {
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+
+    // Puedes personalizar el enlace dependiendo de la imagen
+    if (img.alt.includes("Laptop")) {
+      viewMoreBtn.href = "productos.html#laptops";
+    } else if (img.alt.includes("iPhone")) {
+      viewMoreBtn.href = "productos.html#iphone";
+    } else if (img.alt.includes("Auriculares")) {
+      viewMoreBtn.href = "productos.html#auriculares";
+    } else {
+      viewMoreBtn.href = "productos.html";
+    }
+
+    setTimeout(() => modal.classList.add("show"), 10);
+  });
+});
+
+// Cerrar con la X
+closeModal.addEventListener("click", () => {
+  modal.classList.remove("show");
+  setTimeout(() => modal.style.display = "none", 300);
+});
+
+// Cerrar al hacer clic fuera de la imagen
+modal.addEventListener("click", e => {
+  if (e.target === modal) {
+    modal.classList.remove("show");
+    setTimeout(() => modal.style.display = "none", 300);
+  }
+});
 
 
