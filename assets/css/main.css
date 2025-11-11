@@ -6179,3 +6179,408 @@ section,
     display: none; /* Oculta el texto */
   }
 }
+
+/*--------------------------------------------------------------
+# Dark Mode Theme
+--------------------------------------------------------------*/
+body.dark-mode {
+  --background-color: #0a0a0a;
+  --default-color: #e0e0e0;
+  --heading-color: #ffffff;
+  --accent-color: #ff6b35;
+  --surface-color: #1a1a1a;
+  --contrast-color: #ffffff;
+  --nav-color: #e0e0e0;
+  --nav-hover-color: #ff6b35;
+  --nav-mobile-background-color: #1a1a1a;
+  --nav-dropdown-background-color: #2a2a2a;
+  --nav-dropdown-color: #e0e0e0;
+  --nav-dropdown-hover-color: #ff6b35;
+}
+
+/* Header en modo oscuro */
+body.dark-mode .header {
+  background-color: #0a0a0a;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .top-bar {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .top-links li a {
+  color: #e0e0e0;
+}
+
+/* Botón de categorías en modo oscuro */
+body.dark-mode .btn-categories {
+  color: #e0e0e0;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .btn-categories:hover {
+  color: #ff6b35;
+  border-color: #ff6b35;
+}
+
+/* Menú de categorías en modo oscuro */
+body.dark-mode .categories-menu {
+  background: #1a1a1a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .category-item {
+  color: #e0e0e0;
+}
+
+body.dark-mode .category-item:hover {
+  background: #2a2a2a;
+}
+
+/* Buscador en modo oscuro */
+body.dark-mode .header .search-form .form-control {
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #e0e0e0;
+}
+
+body.dark-mode .header .search-form .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Footer en modo oscuro */
+body.dark-mode .footer {
+  background-color: #0a0a0a;
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Botón de tema mejorado */
+#themeToggle {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+body.dark-mode #themeToggle {
+  background: #2a2a2a;
+  color: #e0e0e0;
+}
+
+#themeToggle:hover {
+  transform: scale(1.05);
+}
+
+#themeToggle i {
+  transition: transform 0.3s ease;
+}
+
+#themeToggle:hover i {
+  transform: rotate(180deg);
+}
+
+/* Transición suave para todos los elementos */
+body,
+.header,
+.footer,
+.btn-categories,
+.categories-menu,
+.category-item {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/*--------------------------------------------------------------
+# Dark Mode - Secciones Específicas (Ofertas y Categorías)
+--------------------------------------------------------------*/
+
+/* Sección de Ofertas en modo oscuro */
+body.dark-mode #ofertas.light-background {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode #ofertas .intro-panel {
+  background: linear-gradient(180deg, #2a2a2a, rgba(255, 107, 53, 0.08));
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode #ofertas .intro-title,
+body.dark-mode #ofertas .intro-text {
+  color: #e0e0e0;
+}
+
+body.dark-mode #ofertas .intro-highlights li {
+  color: #e0e0e0;
+}
+
+/* Sección de Categorías/Productos en modo oscuro */
+body.dark-mode #productos.light-background {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode #productos .feature-item {
+  background: #2a2a2a;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode #productos .f-body .f-title {
+  color: #ffffff;
+}
+
+body.dark-mode #productos .feature-item:hover {
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+}
+
+/* Títulos de sección en modo oscuro */
+body.dark-mode .section-title h2 {
+  color: #ffffff;
+}
+
+body.dark-mode .section-title p {
+  color: #e0e0e0;
+}
+
+/* Imágenes con mejor contraste en modo oscuro */
+body.dark-mode .feature-item .f-image img,
+body.dark-mode .intro-panel img {
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+}
+
+body.dark-mode .feature-item:hover .f-image img,
+body.dark-mode .intro-panel:hover img {
+  opacity: 1;
+}
+
+/*-------------------------------------------------------------- # Dark Mode - Testimonials Section --------------------------------------------------------------*/
+
+/* Sección de Testimonios en modo oscuro */
+body.dark-mode #testimonials.light-background {
+  background-color: #1a1a1a;
+}
+
+/* Critical Reviews Cards */
+body.dark-mode .critic-review {
+  background: #2a2a2a;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .critic-review .review-quote {
+  color: #ff6b35;
+}
+
+body.dark-mode .critic-review .stars i {
+  color: #ffc107;
+}
+
+body.dark-mode .critic-review p {
+  color: #e0e0e0;
+}
+
+body.dark-mode .critic-review .critic-info .critic-name {
+  color: #ffffff;
+}
+
+/* Testimonial Slider Items */
+body.dark-mode .testimonial-item {
+  background: #2a2a2a;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .testimonial-item .stars i {
+  color: #ffc107;
+}
+
+body.dark-mode .testimonial-item p {
+  color: #e0e0e0;
+}
+
+body.dark-mode .testimonial-item h3 {
+  color: #ffffff;
+}
+
+body.dark-mode .testimonial-item h4 {
+  color: #b0b0b0;
+}
+
+/* Overall Rating */
+body.dark-mode .overall-rating {
+  background: #2a2a2a;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .overall-rating .rating-number {
+  color: #ff6b35;
+}
+
+body.dark-mode .overall-rating .rating-stars i {
+  color: #ffc107;
+}
+
+body.dark-mode .overall-rating p {
+  color: #e0e0e0;
+}
+
+body.dark-mode .overall-rating .rating-platforms span {
+  color: #b0b0b0;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Swiper Pagination en modo oscuro */
+body.dark-mode .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .swiper-pagination-bullet-active {
+  background: #ff6b35;
+}
+
+/* Hover effects */
+body.dark-mode .critic-review:hover,
+body.dark-mode .testimonial-item:hover {
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+  border-color: rgba(255, 107, 53, 0.3);
+}
+
+/* Testimonial Profile Images */
+body.dark-mode .testimonial-profile img {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .testimonial-profile img:hover {
+  border-color: #ff6b35;
+}
+
+/*-------------------------------------------------------------- # Dark Mode - Testimonials Section --------------------------------------------------------------*/
+
+/* Sección de Testimonios en modo oscuro */
+body.dark-mode #testimonials.light-background {
+  background-color: #1a1a1a;
+}
+
+/* Contenedor principal de testimonios */
+body.dark-mode .testimonials-container {
+  background-color: transparent;
+}
+
+/* Critical Reviews Cards - Más específico */
+body.dark-mode .critic-reviews .critic-review {
+  background: #2a2a2a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .critic-review .review-quote {
+  color: #ff6b35;
+}
+
+body.dark-mode .critic-review .stars i {
+  color: #ffc107;
+}
+
+body.dark-mode .critic-review p {
+  color: #e0e0e0;
+}
+
+body.dark-mode .critic-review .critic-info .critic-name {
+  color: #ffffff;
+}
+
+/* Testimonial Slider Items - Más específico */
+body.dark-mode .testimonials-slider .testimonial-item {
+  background: #2a2a2a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .testimonial-item .stars i {
+  color: #ffc107;
+}
+
+body.dark-mode .testimonial-item p {
+  color: #e0e0e0;
+}
+
+body.dark-mode .testimonial-item .testimonial-profile h3 {
+  color: #ffffff;
+}
+
+body.dark-mode .testimonial-item .testimonial-profile h4 {
+  color: #b0b0b0;
+}
+
+/* Overall Rating */
+body.dark-mode .overall-rating {
+  background: #2a2a2a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+body.dark-mode .overall-rating .rating-number {
+  color: #ff6b35;
+}
+
+body.dark-mode .overall-rating .rating-stars i {
+  color: #ffc107;
+}
+
+body.dark-mode .overall-rating p {
+  color: #e0e0e0;
+}
+
+body.dark-mode .overall-rating .rating-platforms span {
+  color: #b0b0b0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #1a1a1a;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 0.25rem;
+}
+
+/* Swiper Pagination en modo oscuro */
+body.dark-mode .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+}
+
+body.dark-mode .swiper-pagination-bullet-active {
+  background: #ff6b35;
+}
+
+/* Hover effects */
+body.dark-mode .critic-reviews .critic-review:hover,
+body.dark-mode .testimonials-slider .testimonial-item:hover {
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+  border-color: rgba(255, 107, 53, 0.5);
+  transform: translateY(-5px);
+}
+
+/* Testimonial Profile Images */
+body.dark-mode .testimonial-profile img {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .testimonial-profile img:hover {
+  border-color: #ff6b35;
+}
+
+/* Swiper Container */
+body.dark-mode .swiper {
+  background: transparent;
+}
+
+body.dark-mode .swiper-wrapper {
+  background: transparent;
+}
+
+/* Asegurar que el slide tenga el fondo correcto */
+body.dark-mode .swiper-slide {
+  background: transparent;
+}

@@ -429,7 +429,7 @@ togglePasswords.forEach(icon => {
     window.location.href = "https://www.facebook.com/login";
   }
 
-  
+
 const modal = document.getElementById("imageModal");
 const modalImg = document.getElementById("modalImage");
 const closeModal = document.querySelector(".close-modal");
@@ -471,3 +471,35 @@ modal.addEventListener("click", e => {
 });
 
 
+
+
+const themeToggle = document.getElementById('themeToggle');
+
+// Cargar tema guardado al inicio
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+  document.body.classList.add('dark-mode');
+  updateThemeButton(true);
+}
+
+themeToggle.addEventListener('click', () => {
+  const isDark = document.body.classList.toggle('dark-mode');
+  
+  // Guardar preferencia
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  
+  // Actualizar botón
+  updateThemeButton(isDark);
+});
+
+function updateThemeButton(isDark) {
+  if (isDark) {
+    themeToggle.innerHTML = '<i class="bi bi-sun-fill"></i> Modo Claro';
+    themeToggle.classList.remove('btn-light');
+    themeToggle.classList.add('btn-dark');
+  } else {
+    themeToggle.innerHTML = '<i class="bi bi-moon-stars-fill"></i> Modo Oscuro';
+    themeToggle.classList.remove('btn-dark');
+    themeToggle.classList.add('btn-light');
+  }
+}
